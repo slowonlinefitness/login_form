@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8" />
+    <title>Paticipating application form</title>
+</head>
+<body>
+    <form action="https://docs.google.com/forms/d/e/1FAIpQLSeS4oQ_WZSQxvQIglQ__Gj5zd8nj3ZeQFpuMM0wGovV2UmQsQ/formResponse" id="form" method="post" target="hidden_iframe">
+
+        <div class="ID">
+            配布したIDをご入力ください:
+            <input id="id" name="entry.873910534" placeholder="" required="required" type="text" onfocus="color_reset();" />
+        </div>
+
+
+        <div style="text-align:center">
+            <input id="button" name="button" type="submit" value="送 信">
+        </div>
+
+
+    </form>
+
+    <script>
+
+        let submitted = false;
+
+        var submitCheck = async function Check() {
+
+            const endpoint = "https://script.google.com/macros/s/AKfycbz8wqfaWzd4Xp-3PeMLDshgxL-5KNiDcmG9DM80615X9NgGLHN5g5zH9yEnnF-NwENKcw/exec";
+
+
+
+            //APIを使って非同期データを取得する
+            try {
+                const response = await fetch(endpoint);
+                const data = await response.json();
+
+                /*成功した処理*/
+                let id_target = document.getElementById('id');
+
+                let judge = 0;
+
+                for (i in data) {
+
+
+                    if (data[i].id == id_target.value) {
+
+                        judge = judge + 1;
+
+                    }
+
+                }
+
+                console.log(judge);
+
+                if (judge == 1) {
+
+                    return true;
+
+                } else if (judge == 0) {
+
+                    document.getElementById("id").value = "IDが違います。";
+                    document.getElementById("id").style.color = "red";
+                    return false;
+                }
+
+
+            } catch (error) {
+
+                // エラー処理
+                //console.error(error);
+                //alert("エラーが発生しました。");
+                return false;
+
+            }
+
+        }
+
+
+        function color_reset() {
+
+            document.getElementById("id").select();
+            document.getElementById("id").style.color = "black";
+        }
+
+
+
+        document.getElementById("form").addEventListener("submit", function (event) {
+            event.preventDefault();
+            submitCheck().then(function (result) {
+                if (result) {
+                    document.getElementById("form").submit();
+                    submitted = true;
+                }
+            });
+        });
+
+
+        
+    </script>
+
+    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none" onload="if(submitted){window.location='https://youtu.be/yG_1iQX4Qaw?t=300';}">
+    </iframe>
+
+
+</body>
+</html>
