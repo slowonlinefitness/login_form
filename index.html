@@ -6,13 +6,17 @@
 </head>
 <body>
     <form action="https://docs.google.com/forms/d/e/1FAIpQLSeS4oQ_WZSQxvQIglQ__Gj5zd8nj3ZeQFpuMM0wGovV2UmQsQ/formResponse" id="form" method="post" target="hidden_iframe">
-    <font-size: 130%>
-        <div class="ID">
+         <div class="ID">
             <font size="40"> 配布したIDをご入力ください:　
             </font>
             <br></br>
             <font size = "+10">
-            <input id="id" name="entry.873910534" size = "60" placeholder=""  required="required" type="text" onfocus="color_reset();" /> 
+	<style>
+input[type = "text"]{
+font-size:150%;
+}
+</style>
+            <input id="id" name="entry.873910534" placeholder=""  required="required" type="text" onfocus="color_reset();" /> 
             </font>
             <br></br>
             <br></br>
@@ -21,11 +25,10 @@
         </div>
     
 
-        <div style="text-align:center">
-            <input id="button" name="button" type="submit" style="width :50%; height : 150%"　value="送 信">
+        <div>
+	    <input id="button" name="button" type="submit" style="width:90%; padding: 10px; font-size: 30px"　value="送 信">
         </div>
-    </font-size>
-
+   
     </form>
 
     <script>
